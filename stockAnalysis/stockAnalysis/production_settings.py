@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'stockAnalysis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'stock',
-        'USER': 'postgres',
-        'PASSWORD': '0921346555',
-        'HOST': '127.0.0.1',
+        'NAME': 'd6cd408d6m9crd',
+        'USER': 'xyqsjcggeghfun',
+        'PASSWORD': 'e5a01ddc850f8bbb766bf4bcd63694e44bf36c548a534ab80f447300242a5fca',
+        'HOST': 'ec2-107-21-126-193.compute-1.amazonaws.com',
         #'PORT': ''
     }
 }
