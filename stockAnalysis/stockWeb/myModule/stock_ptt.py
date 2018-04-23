@@ -57,7 +57,7 @@ try:
     
     conn = psycopg2.connect(database="stock", user="postgres", password="0921346555", host="127.0.0.1", port="5432")
     cur = conn.cursor()
-    execute_values(cur, 'INSERT INTO stock_articles (author, title, publish_date, article_url) VALUES %s',article_upsert_array)        
+    execute_values(cur, 'INSERT INTO stock_articles (author, title, publish_date, article_url) VALUES %s ON CONFLICT DO NOTHING',article_upsert_array)        
     conn.commit()
     conn.close()
 
