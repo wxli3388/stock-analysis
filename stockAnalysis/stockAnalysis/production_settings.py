@@ -55,7 +55,7 @@ ROOT_URLCONF = 'stockAnalysis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['stockfront/dist'],
+        'DIRS': ['stockAnalysis/stockfront/dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,5 +126,5 @@ STATIC_URL = '/static/'
 
 # Add for vuejs
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "stockfront/dist/static"),
+    os.path.join(BASE_DIR, "stockAnalysis/stockfront/dist/static"),
 ]

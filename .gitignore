@@ -2,6 +2,9 @@ stockAnalysis_venv
 
 node_modules
 
+.babelrc
+.editorconfig
+
 *.pyc
 __pycache__
 staticfiles
