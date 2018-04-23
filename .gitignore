@@ -1,7 +1,6 @@
 stockAnalysis_venv
 
-stockAnalysis/stockfront/*
-!stockAnalysis/stockfront/dist/*
+node_modules
 
 *.pyc
 __pycache__
