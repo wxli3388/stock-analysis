@@ -4,6 +4,7 @@ node_modules
 
 .babelrc
 .editorconfig
+.postcssrc.js
 
 *.pyc
 __pycache__
