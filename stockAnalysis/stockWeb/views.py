@@ -4,11 +4,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    import MySQLdb as mysql
+        
+    import sys
+    from stockWeb.models import Stock_articles
+    
+    #sa = Stock_articles(author='test', title='test', publish_date='2018-04-24 00:00:00', notification='n')
+    #sa.save()
 
-    conn = mysql.connect(host='localhost',port=3306,user='root',passwd='0921346555',db='stock',charset='utf8')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM stockdata LIMIT 10')
-    results = cursor.fetchall()
-
-    return HttpResponse(results)
+    r = Stock_articles.objects.all()
+    return HttpResponse(r[0].title)

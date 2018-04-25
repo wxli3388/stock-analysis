@@ -30,24 +30,29 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+"""
+'django.contrib.admin',
+'django.contrib.auth',
+
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+"""
+
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.auth',
     'stockWeb'
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'stockAnalysis.urls'
@@ -56,15 +61,15 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['stockfront/dist'],
-        'APP_DIRS': True,
+        'APP_DIRS': True,        
         'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
+            # 'context_processors': [
+            #     'django.template.context_processors.debug',
+            #     'django.template.context_processors.request',
+            #     'django.contrib.auth.context_processors.auth',
+            #     'django.contrib.messages.context_processors.messages',
+            # ],
+        },        
     },
 ]
 
@@ -77,7 +82,7 @@ WSGI_APPLICATION = 'stockAnalysis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'stock',
+        'NAME': 'stock_two',
         'USER': 'postgres',
         'PASSWORD': '0921346555',
         'HOST': '127.0.0.1',
@@ -116,7 +121,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

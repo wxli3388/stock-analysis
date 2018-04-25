@@ -1,15 +1,19 @@
+# coding=utf-8
+import os
+import sys
+import django
+sys.path.append('D:\codingProject\stockAnalysis\stockAnalysis') # 将项目路径添加到系统搜寻路径当中
+os.environ['DJANGO_SETTINGS_MODULE'] = 'stockAnalysis.settings' # 设置项目的配置文件
+django.setup()
+
+
 import requests
-
-import psycopg2
-from psycopg2.extras import execute_values
-
-from fake_useragent import UserAgent
 
 from bs4 import BeautifulSoup
 
 from datetime import datetime
 
-import sys
+from stockWeb.models import Stock_articles
 
 
 try:
@@ -34,8 +38,7 @@ try:
                 
             url_list.append(ptt_domain+article_url)
 
-    article_dict = []
-    article_upsert_array = []
+    article_upsert_list = []
     for one_url in url_list:
         response = requests.get(one_url)
         soup = BeautifulSoup(response.text, 'lxml')
@@ -53,26 +56,12 @@ try:
             date_list = date.split()
             publish_date = datetime.strptime(date_list[2]+'-'+date_list[1]+'-'+date_list[4]+' '+date_list[3],'%d-%b-%Y %H:%M:%S')
 
-        article_upsert_array.append((author,title,publish_date,one_url))
-    
-    conn = psycopg2.connect(database="stock", user="postgres", password="0921346555", host="127.0.0.1", port="5432")
-    cur = conn.cursor()
-    execute_values(cur, 'INSERT INTO stock_articles (author, title, publish_date, article_url) VALUES %s ON CONFLICT DO NOTHING',article_upsert_array)        
-    conn.commit()
-    conn.close()
-
-    sys.exit(0)
-    
-    #raise Exception('證交所資料異常')
-
+        p = Stock_articles(author=author, title=title, publish_date=publish_date, article_url=one_url, notification='N')
+        p.save()
         
+        #article_upsert_list.append(Stock_articles(author=author, title=title, publish_date=publish_date, article_url=one_url, notification='N'))
+    #Stock_articles.objects.bulk_create(article_upsert_list)    
+    sys.exit(0)
+
 except Exception as e:
     print(e)
-#print(stockDataJson['stat'])
-
-
-
-"""
-ua = UserAgent()
-print(ua.random)
-"""
