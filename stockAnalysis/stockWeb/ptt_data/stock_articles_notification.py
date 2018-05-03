@@ -27,9 +27,10 @@ try:
     for row in rows:
         update_notification_id_list.append(row.sid)
 
-        #line_id = 'U225d5f9dadad6cdfd1aa25a169228db2'
-        line_id = 'C4032f45274917ee678af67b882dfc2f6'
+        #myline_id = 'U225d5f9dadad6cdfd1aa25a169228db2'
+        #line_bot_api.push_message(myline_id, TextSendMessage(text=row.title+'\n'+row.author+'\n'+datetime.strftime(row.publish_date, '%Y-%m-%d %H:%M:%S')+'\n'+row.article_url))
 
+        line_id = 'C4032f45274917ee678af67b882dfc2f6'        
         line_bot_api.push_message(line_id, TextSendMessage(text=row.title+'\n'+row.author+'\n'+datetime.strftime(row.publish_date, '%Y-%m-%d %H:%M:%S')+'\n'+row.article_url))
         time.sleep(1)
 
