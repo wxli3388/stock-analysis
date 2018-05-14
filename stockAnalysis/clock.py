@@ -15,23 +15,11 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler()
 
 
-@sched.scheduled_job('interval', minutes=3)
+@sched.scheduled_job('interval', minutes=5)
 def timed_job():
     sp = StockPtt()
-    sp.get_articles()
+    sp.get_articles(page_recursive=2)
     pn = PushNotification()
     pn.ptt_stock_push_line()
-
-# def testing1():
-#     print ("testing1 - every 2 min...")
-#     sp = StockPtt()
-#     sp.get_articles()
-#     pn = PushNotification()
-#     pn.ptt_stock_push_line()
-
-# if __name__ == '__main__':
-#     from apscheduler.schedulers.blocking import BlockingScheduler
-#     sched = BlockingScheduler()
-#     sched.add_job(testing1, 'cron', id='run_every_2_min', minute='*/2')
 
 sched.start()

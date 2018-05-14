@@ -20,7 +20,7 @@ class PushNotification():
     
     def ptt_stock_push_line(self):
         try:
-            author_white_list = ['lovdkkkk', 's10330076', 'MaInNine', 'q1w2e3r4t5', 'fill8800541']
+            author_white_list = ['lovdkkkk', 's10330076', 'MaInNine', 'q1w2e3r4t5', 'chengwaye']
             myline_id = 'U225d5f9dadad6cdfd1aa25a169228db2'
             line_id = 'C4032f45274917ee678af67b882dfc2f6'        
 
@@ -32,8 +32,8 @@ class PushNotification():
             for row in rows:
                 update_notification_id_list.append(row.sid)
                 
-                line_bot_api.push_message(myline_id, TextSendMessage(text=row.title+'\n'+row.author+'\n'+datetime.strftime(row.publish_date, '%Y-%m-%d %H:%M:%S')+'\n'+row.article_url))
-                #line_bot_api.push_message(line_id, TextSendMessage(text=row.title+'\n'+row.author+'\n'+datetime.strftime(row.publish_date, '%Y-%m-%d %H:%M:%S')+'\n'+row.article_url))
+                #line_bot_api.push_message(myline_id, TextSendMessage(text=row.title+'\n'+row.author+'\n'+datetime.strftime(row.publish_date, '%Y-%m-%d %H:%M:%S')+'\n'+row.article_url))
+                line_bot_api.push_message(line_id, TextSendMessage(text=row.title+'\n'+row.author+'\n'+datetime.strftime(row.publish_date, '%Y-%m-%d %H:%M:%S')+'\n'+row.article_url))
                 time.sleep(1)
 
             Stock_articles.objects.filter(sid__in = update_notification_id_list).update(notification='Y')
