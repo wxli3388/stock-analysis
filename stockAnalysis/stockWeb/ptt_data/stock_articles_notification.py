@@ -48,5 +48,5 @@ class PushNotification():
         except Exception as e:
             print(e)
 
-push_notification = PushNotification()
-push_notification.ptt_stock_push_line()
+# push_notification = PushNotification()
+# push_notification.ptt_stock_push_line()

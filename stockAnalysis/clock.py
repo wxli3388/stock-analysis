@@ -7,13 +7,13 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'stockAnalysis.production_settings' # 设
 #os.environ['DJANGO_SETTINGS_MODULE'] = 'stockAnalysis.settings' # 设置项目的配置文件
 django.setup()
 
-
 from stockWeb.ptt_data.get_stock_articles import StockPtt
 from stockWeb.ptt_data.stock_articles_notification import PushNotification
 
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler()
+
 
 @sched.scheduled_job('interval', minutes=3)
 def timed_job():
