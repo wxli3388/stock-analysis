@@ -78,5 +78,5 @@ class StockPtt():
             print(e)
     
 
-stock = StockPtt()
-stock.get_articles(page_recursive=2)
+# stock = StockPtt()
+# stock.get_articles(page_recursive=2)

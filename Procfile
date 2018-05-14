@@ -1,2 +1,2 @@
-web: gunicorn --pythonpath stockAnalysis stockAnalysis.wsgi --log-file -
-clock: python stockAnalysis/clock.py --log-file -
+web: gunicorn --pythonpath stockAnalysis stockAnalysis.wsgi
+clock: python stockAnalysis/clock.py
