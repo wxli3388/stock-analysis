@@ -1,3 +1,5 @@
+.vscode
+
 stockAnalysis_venv
 
 node_modules
@@ -10,3 +12,5 @@ node_modules
 __pycache__
 staticfiles
 db.sqlite3
+
+npm-debug.log
