@@ -20,7 +20,9 @@ def ptt_stock_article(request):
             )
         ).filter(
             publish_date__gte=datetime.today().strftime('%Y-%m-%d')
-        ).values('title', 'author', 'article_url', 'publish_date_string')
+        ).values(
+            'title', 'author', 'article_url', 'publish_date_string'
+        ).order_by('-publish_date')
 
     result = {
         'statusCode':200,
