@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w_n%1irc!&hif_=j83qu532p!$^jdcngz4^l2ec(mkvx9)#!fz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'stockAnalysis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'd6cd408d6m9crd',
-        # 'USER': 'xyqsjcggeghfun',
-        # 'PASSWORD': 'e5a01ddc850f8bbb766bf4bcd63694e44bf36c548a534ab80f447300242a5fca',
-        # 'HOST': 'ec2-107-21-126-193.compute-1.amazonaws.com',
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': os.environ.get('DATABASE_HOST'),
     }
 }
 
