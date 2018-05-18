@@ -18,9 +18,9 @@ from django.urls import include,path,re_path
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 
-    path('api/', include('stockWeb.urls')),
+    path('api/stock/', include('stockWeb.urls')),
     re_path('.*', TemplateView.as_view(template_name="index.html")),
     
 ]

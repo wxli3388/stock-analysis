@@ -3,5 +3,5 @@ from django.urls import path
 from stockWeb import views
 
 urlpatterns = [
-    path('hi', views.index, name='index'),
+    path('ptt-stock-article', views.ptt_stock_article),
 ]

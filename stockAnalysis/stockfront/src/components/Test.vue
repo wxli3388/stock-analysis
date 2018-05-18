@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{info}}</h1>
     <h2>Essential Links</h2>
     <router-link to="/">Go to Helloworld</router-link>
   </div>
@@ -11,8 +11,13 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      info: null
     }
+  },
+  mounted () {
+    axios
+      .get('/api/stock/ptt-stock-article')
+      .then(response => (this.info = response))
   }
 }
 </script>

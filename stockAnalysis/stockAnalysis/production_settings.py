@@ -74,16 +74,16 @@ WSGI_APPLICATION = 'stockAnalysis.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6cd408d6m9crd',
-        'USER': 'xyqsjcggeghfun',
-        'PASSWORD': 'e5a01ddc850f8bbb766bf4bcd63694e44bf36c548a534ab80f447300242a5fca',
-        'HOST': 'ec2-107-21-126-193.compute-1.amazonaws.com',
-        #'PORT': ''
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd6cd408d6m9crd',
+#         'USER': 'xyqsjcggeghfun',
+#         'PASSWORD': 'e5a01ddc850f8bbb766bf4bcd63694e44bf36c548a534ab80f447300242a5fca',
+#         'HOST': 'ec2-107-21-126-193.compute-1.amazonaws.com',
+#         #'PORT': ''
+#     }
+# }
 
 
 # Password validation

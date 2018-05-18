@@ -1,4 +1,5 @@
-# coding=utf-8
+#coding=utf-8
+
 import os
 import sys
 import django
@@ -77,6 +78,10 @@ class StockPtt():
         except Exception as e:
             print(e)
     
+
+if __name__ == "__main__":
+    sp = StockPtt()
+    sp.get_articles()
 
 # stock = StockPtt()
 # stock.get_articles(page_recursive=2)
