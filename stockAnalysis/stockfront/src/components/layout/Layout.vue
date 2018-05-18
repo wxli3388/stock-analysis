@@ -10,16 +10,12 @@
         </el-container>
       </el-container>
     </el-container>
-    <router-link to="/test">Go to test</router-link>
+    <router-link to="/test">Go to stock articles</router-link>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-  }
-}
+export default {}
 </script>
 
 <style>

@@ -1,8 +1,21 @@
 <template>
-  <div class="hello">
-    <h1>{{info}}</h1>
-    <h2>Essential Links</h2>
-    <router-link to="/">Go to Helloworld</router-link>
+  <div class="my-content">
+    <el-table :data="stockData">
+      <el-table-column
+        prop="publish_date_string"
+        label="日期">
+      </el-table-column>
+      <el-table-column
+        prop="author"
+        label="作者">
+      </el-table-column>
+      <el-table-column label="標題">
+        <template scope="scope">
+          <a :href="scope.row.article_url">{{scope.row.title}}</a>
+        </template>
+      </el-table-column>
+    </el-table>
+    <router-link to="/">Go to index</router-link>
   </div>
 </template>
 
@@ -11,31 +24,27 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      info: null
+      stockTitle: ['日期', '作者', '標題'],
+      stockData: null
     }
   },
   mounted () {
-    axios
-      .get('/api/stock/ptt-stock-article')
-      .then(response => (this.info = response))
+    //axios.get('http://127.0.0.1:8000/api/stock/ptt-stock-article')
+    axios.get('api/stock/ptt-stock-article')
+      .then(response => {
+        if (response.data.statusCode===200)          
+          this.stockData = response.data.payload
+      })
+  },
+  methods:{
+    onTitleClick(url){
+      console.log("1")
+      window.location.href=url
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

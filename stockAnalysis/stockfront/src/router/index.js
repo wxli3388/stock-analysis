@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import axios from 'axios'
 
 import Layout from '@/components/layout/Layout'
-import HelloWorld from '@/components/HelloWorld'
 import Test from '@/components/Test'
 
 import ElementUI from 'element-ui'
