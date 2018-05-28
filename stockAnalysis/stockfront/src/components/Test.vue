@@ -15,7 +15,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <router-link to="/">Go to index</router-link>
+    <!-- <router-link to="/">Go to index</router-link> -->
   </div>
 </template>
 
@@ -38,7 +38,6 @@ export default {
   },
   methods:{
     onTitleClick(url){
-      console.log("1")
       window.location.href=url
     }
   }

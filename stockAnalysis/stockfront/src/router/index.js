@@ -14,12 +14,7 @@ window.axios = axios
 
 export default new Router({
     routes: [{
-            path: '/',
-            component: Layout
-        },
-        {
-            path: '/test',
-            component: Test
-        }
-    ]
+        path: '/',
+        component: Test
+    }]
 })
