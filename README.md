@@ -1,5 +1,5 @@
 # stock-analysis
-PTTWeb stock board scrpy  
+PTTWeb stock board scrapy  
 push notification through line bot
 
 ## Backend 
