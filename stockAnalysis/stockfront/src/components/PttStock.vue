@@ -66,8 +66,8 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      // axios.post('api/stock/ptt-stock-article')
-      axios.post('http://127.0.0.1:8000/api/stock/ptt-stock-article',
+      axios.post('api/stock/ptt-stock-article',
+      // axios.post('http://127.0.0.1:8000/api/stock/ptt-stock-article',
         Qs.stringify(this.listQuery),
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
       ).then(response => {
