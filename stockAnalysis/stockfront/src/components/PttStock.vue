@@ -1,5 +1,6 @@
 <template>
   <div class="my-content" >
+    <meta id="token" name="token" value="{ csrf_token() }">
     <div class="filter-container">
       <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" v-model="listQuery.keyword">
       </el-input>
@@ -37,6 +38,7 @@
 
 <script>
 import Qs from 'qs'
+
 export default {
   data () {
     return {
