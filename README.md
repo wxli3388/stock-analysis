@@ -1,5 +1,5 @@
 # stock-analysis
-PTTWeb stock board scrpy  
+PTTWeb stock board scrapy  
 push notification through line bot
 
 ## Backend 
@@ -9,5 +9,10 @@ Django2.0
 vue-webpack  
 
 ## Deploy
-heroku  
-https://stockanalysis-cy.herokuapp.com/#/
+website url  
+https://stockanalysis-cy.herokuapp.com/#/  
+  
+default page: show Today's article  
+
+scrapy url  
+https://www.ptt.cc/bbs/Stock/index.html
