@@ -16,17 +16,17 @@ Vue.use(ElementUI, { locale })
 window.axios = axios
 
 export default new Router({
-    routes: [{
-            path: '/',
-            component: Index
-        },
-        {
-            path: '/ptt-stock',
-            component: PttStock
-        },
-        {
-            path: '/twse-stock-data',
-            component: TwseStockData
-        }
-    ]
+  routes: [{
+    path: '/',
+    component: Index
+  },
+  {
+    path: '/ptt-stock',
+    component: PttStock
+  },
+  {
+    path: '/twse-stock-data',
+    component: TwseStockData
+  }
+  ]
 })

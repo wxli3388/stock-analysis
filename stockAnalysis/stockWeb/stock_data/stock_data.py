@@ -18,7 +18,7 @@ class StockData():
     
     def get_stock_data(self, data_date=datetime.datetime.today().strftime('%Y%m%d')):
         
-        # try:
+        try:
             """
             #["0050","元大台灣50","4,099,855","1,127","336,213,829","82.25","82.35","81.80","82.10","<p style= color:green>-<\u002fp>","0.15","82.05","20","82.10","96","0.00"]
             #["證券代號","證券名稱","成交股數","成交筆數","成交金額","開盤價","最高價","最低價","收盤價","漲跌(+/-)","漲跌價差","最後揭示買價","最後揭示買量","最後揭示賣價","最後揭示賣量","本益比"]
@@ -51,7 +51,16 @@ class StockData():
             if stock_data_json['stat'] == 'OK':                    
                 insert_list = []    
                 clear_string_instance = ClearString()
-                for row in stock_data_json['data5']:
+
+                if 'data5' in stock_data_json:
+                    stock_data = stock_data_json['data5']
+                elif 'data2' in stock_data_json:
+                    stock_data = stock_data_json['data2']
+
+                if not stock_data:
+                    raise Exception
+                    
+                for row in stock_data:
                     if(row[5]=='--'):
                         continue
 
@@ -93,14 +102,28 @@ class StockData():
                     cursor.execute('INSERT INTO "stockWeb_stock_code" (code, name) VALUES (%s, %s) ON CONFLICT (code) DO UPDATE SET name=(%s)',(row[0], row[1], row[1]))
 
             else:
-                raise Exception('證交所資料異常')
+                print(stock_date+'\n')
 
-        # except Exception as e:
-        #     print(e)
+        except Exception:
+            print(stock_date+'\n')
             
-        #print(stockDataJson['stat'])
 
 
 if __name__ == "__main__":
     sd = StockData()
     sd.get_stock_data()
+    
+    
+    from datetime import timedelta, date
+    import time
+
+    def daterange(date1, date2):
+        for n in range(int ((date2 - date1).days)+1):
+            yield date1 + timedelta(n)
+
+    start_dt = date(2004, 2, 11)
+    end_dt = date(2015, 1, 1)
+    for dt in daterange(start_dt, end_dt):
+        sd.get_stock_data(dt.strftime("%Y%m%d"))
+        time.sleep(3)
+        

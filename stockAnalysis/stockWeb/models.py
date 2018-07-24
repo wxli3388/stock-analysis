@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Stock_articles(models.Model):
+class StockArticles(models.Model):
     sid = models.AutoField(primary_key=True)
     author = models.CharField(max_length=20)
     title = models.CharField(max_length=70)
@@ -10,7 +10,15 @@ class Stock_articles(models.Model):
     article_url = models.CharField(max_length=60, unique=True)
     notification = models.CharField(max_length=1, default='N')
 
-class Stock_data(models.Model):
+class StockCode(models.Model):
+    sid = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=10)
+    name = models.CharField(max_length=20)
+
+    class Meta:
+        unique_together = (('code'),)
+
+class StockData(models.Model):
     sid = models.AutoField(primary_key=True)
     code = models.CharField(max_length=10)
     publish_date = models.DateField()
@@ -28,11 +36,3 @@ class Stock_data(models.Model):
 
     class Meta:
         unique_together = (('code', 'publish_date'),)
-
-class Stock_code(models.Model):
-    sid = models.AutoField(primary_key=True)
-    code = models.CharField(max_length=10)
-    name = models.CharField(max_length=20)
-
-    class Meta:
-        unique_together = (('code'),)
