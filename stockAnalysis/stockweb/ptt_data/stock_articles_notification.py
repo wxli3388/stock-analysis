@@ -14,7 +14,7 @@ from datetime import datetime
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
 
-from stockWeb.models import Stock_articles
+from stockweb.models import StockArticles
 
 class PushNotification():
     
@@ -26,7 +26,7 @@ class PushNotification():
 
             line_bot_api = LineBotApi('N8l3ZKewjdBmfplwDmh5j8K5uvaezW6J7Mpzv3wapa7v8dadamcZ/AKSXvADhiJaysBeINHzYCiDxmaz7eaZeQ2Cbrnpt1YIIS3Lfmm8Js+ZtfxzMKGc0RkWzVTDrX+Bf6wCmiCa098d3/XztWgyswdB04t89/1O/w1cDnyilFU=')
 
-            rows = Stock_articles.objects.filter(notification='N').filter(author__in = author_white_list)
+            rows = StockArticles.objects.filter(notification='N').filter(author__in = author_white_list)
 
             update_notification_id_list = []
             for row in rows:
@@ -36,7 +36,7 @@ class PushNotification():
                 line_bot_api.push_message(line_id, TextSendMessage(text=row.title+'\n'+row.author+'\n'+datetime.strftime(row.publish_date, '%Y-%m-%d %H:%M:%S')+'\n'+row.article_url))
                 time.sleep(1)
 
-            Stock_articles.objects.filter(sid__in = update_notification_id_list).update(notification='Y')
+            StockArticles.objects.filter(sid__in = update_notification_id_list).update(notification='Y')
                 
         except Exception as e:
             print(e)

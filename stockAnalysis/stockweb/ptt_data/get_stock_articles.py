@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 
 from datetime import datetime
 
-from stockWeb.models import Stock_articles
+from stockWeb.models import StockArticles
 
 class StockPtt():
     
@@ -71,7 +71,7 @@ class StockPtt():
                     date_list = date.split()
                     publish_date = datetime.strptime(date_list[2]+'-'+date_list[1]+'-'+date_list[4]+' '+date_list[3],'%d-%b-%Y %H:%M:%S')
                 try:
-                    p = Stock_articles(author=author, title=title, publish_date=publish_date, article_url=one_url, notification='N')
+                    p = StockArticles(author=author, title=title, publish_date=publish_date, article_url=one_url, notification='N')
                     p.save()
                 except Exception as e:
                     pass            

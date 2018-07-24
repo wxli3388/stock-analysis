@@ -98,14 +98,15 @@ class StockData():
                     )
 
                     cursor = connection.cursor()
-                    cursor.execute('INSERT INTO "stockWeb_stock_data" (code, publish_date, trading_volume, transaction, turn_over, opening_price, highest_price, lowest_price, closing_price, change, last_bid_price, last_ask_price, price_earnings_ratio) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (code,publish_date) DO NOTHING',one_stock_data)
-                    cursor.execute('INSERT INTO "stockWeb_stock_code" (code, name) VALUES (%s, %s) ON CONFLICT (code) DO UPDATE SET name=(%s)',(row[0], row[1], row[1]))
+                    cursor.execute('INSERT INTO "stockweb_stockdata" (code, publish_date, trading_volume, transaction, turn_over, opening_price, highest_price, lowest_price, closing_price, change, last_bid_price, last_ask_price, price_earnings_ratio) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (code,publish_date) DO NOTHING',one_stock_data)
+                    cursor.execute('INSERT INTO "stockweb_stockcode" (code, name) VALUES (%s, %s) ON CONFLICT (code) DO UPDATE SET name=(%s)',(row[0], row[1], row[1]))
 
             else:
                 print(stock_date+'\n')
 
-        except Exception:
+        except Exception as e:
             print(stock_date+'\n')
+            print(e)
             
 
 
@@ -114,16 +115,16 @@ if __name__ == "__main__":
     sd.get_stock_data()
     
     
-    from datetime import timedelta, date
-    import time
+    # from datetime import timedelta, date
+    # import time
 
-    def daterange(date1, date2):
-        for n in range(int ((date2 - date1).days)+1):
-            yield date1 + timedelta(n)
+    # def daterange(date1, date2):
+    #     for n in range(int ((date2 - date1).days)+1):
+    #         yield date1 + timedelta(n)
 
-    start_dt = date(2004, 2, 11)
-    end_dt = date(2015, 1, 1)
-    for dt in daterange(start_dt, end_dt):
-        sd.get_stock_data(dt.strftime("%Y%m%d"))
-        time.sleep(3)
+    # start_dt = date(2018, 7, 1)
+    # end_dt = date(2018, 7, 24)
+    # for dt in daterange(start_dt, end_dt):
+    #     sd.get_stock_data(dt.strftime("%Y%m%d"))
+    #     time.sleep(3)
         
