@@ -37,7 +37,6 @@ class PushNotification():
                 time.sleep(1)
 
             Stock_articles.objects.filter(sid__in = update_notification_id_list).update(notification='Y')
-            sys.exit(0)
                 
         except Exception as e:
             print(e)
